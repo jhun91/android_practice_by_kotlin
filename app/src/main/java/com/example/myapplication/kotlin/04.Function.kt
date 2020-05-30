@@ -10,3 +10,7 @@ package com.example.myapplication.kotlin
 fun plus(first: Int, second: Int): Int {
     return first + second
 }
+
+fun main(args: Array<String>) {
+    println(plus(2, 3))
+}
