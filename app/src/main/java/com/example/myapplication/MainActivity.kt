@@ -8,7 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.final_test_15)
+        setContentView(R.layout.calc)
 
         Log.d("life_cycle", "onCreate")
     }
