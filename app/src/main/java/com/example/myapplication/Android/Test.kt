@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.calc.*
 class Test : AppCompatActivity() {
 
     private var firstValue: String = "0"
-    var secondValue: String = "0"
+    private var secondValue: String = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +75,5 @@ class Test : AppCompatActivity() {
             firstValue = "0"
             result.text = secondValue
         }
-
     }
 }
