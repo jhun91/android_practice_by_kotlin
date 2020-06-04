@@ -1,9 +1,8 @@
-package com.example.myapplication.Android
+package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.myapplication.R
 import kotlinx.android.synthetic.main.calc.*
 
 class Test : AppCompatActivity() {
