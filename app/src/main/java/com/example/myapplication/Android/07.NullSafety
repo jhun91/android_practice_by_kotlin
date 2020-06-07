@@ -21,3 +21,7 @@ if(number != null) {
 사용방법
 button?.setOnClickListener -> button이 null이 아니라면 setOnClickListener
 button!!.setOnClickListener -> button은 확실히 null이 아님
+
+Null이 될 수 있는 타입
+Int, Double, Float, Class       -> Null이 될 수 없는 타입
+Int?, Double?, Float?, Class?   -> Null이 될 수 있는 타입
