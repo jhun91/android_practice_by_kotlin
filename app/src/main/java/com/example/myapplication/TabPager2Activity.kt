@@ -77,5 +77,4 @@ class ThreePageAdapter(
     override fun getCount(): Int {
         return 3
     }
-
 }
