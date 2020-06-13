@@ -16,5 +16,9 @@ class RealmActivity : AppCompatActivity() {
             .build()    //configuration 만들기
         Realm.setDefaultConfiguration(config)
         val realm = Realm.getDefaultInstance()
+
+
+
     }
+
 }
