@@ -14,3 +14,10 @@ Local Database의 한계
 - 해당 URL로 요청한다.
 - 인증정보를 보낸다.
 - JSON 형식을 사용해서 데이터를 보낸다.
+
+JSON parsing
+-> JSON 을 코틀린이나 자바가 이해할 수 있게 변형하는 과정
+
+Serializable (직렬화)
+
+
