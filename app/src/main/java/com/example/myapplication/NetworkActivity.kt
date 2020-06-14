@@ -1,10 +1,15 @@
 package com.example.myapplication
 
 import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_network.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
@@ -15,12 +20,25 @@ class NetworkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_network)
 
-        NetworkTask().execute()
+        NetworkTask(
+            recycler_person,
+            LayoutInflater.from(this@NetworkActivity)
+        ).execute()
     }
 }
 
-class NetworkTask : AsyncTask<Any?, Any?, Any>() {
-    override fun doInBackground(vararg params: Any?): Any? {
+class NetworkTask(
+    val recyclerView: RecyclerView,
+    val inflater: LayoutInflater
+): AsyncTask<Any?, Any?, Array<PersonFromServer>>() {
+    override fun onPostExecute(result: Array<PersonFromServer>?) {
+        //UI 쓰레드에 접근 가능하기 때문에 여기에서 뷰를 그려준다.
+        val adapter = PersonAdapter(result!!, inflater)
+        recyclerView.adapter = adapter
+        super.onPostExecute(result)
+    }
+
+    override fun doInBackground(vararg params: Any?): Array<PersonFromServer> {
         val urlString: String = "http://mellowcode.org/json/students/"
         val url: URL = URL(urlString)
         val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
@@ -30,7 +48,6 @@ class NetworkTask : AsyncTask<Any?, Any?, Any>() {
 
         var buffer = ""
         if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-            Log.d("connn", "inputStream : " + connection.inputStream)
             val reader = BufferedReader(
                 InputStreamReader(
                     connection.inputStream,
@@ -38,15 +55,42 @@ class NetworkTask : AsyncTask<Any?, Any?, Any>() {
                 )
             )
             buffer = reader.readLine()
-            Log.d("connn", "inputStream : " + buffer)
         }
 
         val data = Gson().fromJson(buffer, Array<PersonFromServer>::class.java)
-        Log.d("connn", "data : " + data)
+        return data  //return 되어 onPostExecute의 파라미터로 들어간다.
+    }
+}
 
-        val age = data[0].age
-        Log.d("connn", "age : " + age)
+class PersonAdapter(
+    val personList: Array<PersonFromServer>,
+    val inflater: LayoutInflater
+) : RecyclerView.Adapter<PersonAdapter.ViewHolder>() {
 
-        return null
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val name: TextView
+        val age: TextView
+        val intro: TextView
+
+        init {
+            name = itemView.findViewById(R.id.person_name)
+            age = itemView.findViewById(R.id.person_age)
+            intro = itemView.findViewById(R.id.person_ment)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return personList.size
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        var view = inflater.inflate(R.layout.person_list_item, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.name.setText(personList.get(position).name ?: "")
+        holder.age.setText(personList.get(position).age.toString())
+        holder.intro.setText(personList.get(position).intro ?: "")
     }
 }
