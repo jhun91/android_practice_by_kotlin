@@ -39,7 +39,5 @@ class RealmActivity : AppCompatActivity() {
                 it.where(School::class.java).findFirst().deleteFromRealm()  //처음것하나만 삭제
             }
         }
-
     }
-
 }
