@@ -14,7 +14,7 @@
         android:layout_marginTop="150dp"
         android:layout_marginBottom="60dp"
         android:gravity="center"
-        android:text="Outstagram"
+        android:text="OutStagram"
         android:textColor="#564b4b"
         android:textSize="60dp" />
 
@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="56dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="56dp">
 
         <EditText
             android:id="@+id/username_inputbox"
@@ -62,16 +62,33 @@
 
     <TextView
         android:id="@+id/register"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#948f8f"
+        android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingTop="16dp"
         android:paddingRight="32dp"
         android:paddingBottom="16dp"
+        android:text="가입하기"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#948f8f"
-        android:textStyle="bold"
-        android:textSize="24dp"
-        android:text="가입하기" />
+        android:gravity="center"
+        android:paddingLeft="32dp"
+        android:paddingTop="16dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="16dp"
+        android:layout_marginTop="12dp"
+        android:text="로그인하기"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 </LinearLayout>
