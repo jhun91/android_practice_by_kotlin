@@ -45,6 +45,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:hint="비밀번호를 입력해주세요"
+            android:inputType="textPassword"
             android:textColorHint="#383a3c" />
 
         <EditText
@@ -56,6 +57,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:hint="비밀번호를 다시 입력해주세요"
+            android:inputType="textPassword"
             android:textColorHint="#383a3c" />
 
     </LinearLayout>
@@ -80,13 +82,13 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="12dp"
         android:background="#948f8f"
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingTop="16dp"
         android:paddingRight="32dp"
         android:paddingBottom="16dp"
-        android:layout_marginTop="12dp"
         android:text="로그인하기"
         android:textSize="18dp"
         android:textStyle="bold" />
