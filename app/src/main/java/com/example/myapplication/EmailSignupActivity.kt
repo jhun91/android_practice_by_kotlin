@@ -70,7 +70,6 @@ class EmailSignupActivity : AppCompatActivity() {
         editor.commit()
     }
 
-
     fun initView(activity: Activity) {
         usernameView = activity.findViewById(R.id.username_inputbox)
         userPassword1View = activity.findViewById(R.id.password1_inputbox)
