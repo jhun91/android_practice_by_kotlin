@@ -11,12 +11,12 @@ interface RetrofitService {
 
     @POST("json/students/")
     fun createStudent(
-        @Body params : HashMap<String, Any>
+        @Body params: HashMap<String, Any>
     ): Call<PersonFromServer>
 
     @POST("json/students/")
     fun createStudentEasy(
-        @Body person : PersonFromServer
+        @Body person: PersonFromServer
     ): Call<PersonFromServer>
 
     @POST("user/signup/")
@@ -33,4 +33,7 @@ interface RetrofitService {
         @Field("username") username: String,
         @Field("password") password: String
     ): Call<User>
+
+    @GET("/instagram/post/list/all/")
+    fun getAllPosts(): Call<ArrayList<Post>>
 }

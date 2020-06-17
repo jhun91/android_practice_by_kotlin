@@ -25,24 +25,40 @@ class LoginActivity : AppCompatActivity() {
             val username = username_inputbox.text.toString()
             val password = password_inputbox.text.toString()
 
-            (application as MasterApplication).service.login(username, password)
-                .enqueue(object : Callback<User> {
-                    override fun onFailure(call: Call<User>, t: Throwable) {
+            Toast.makeText(this@LoginActivity, "로그인 하셨습니다.", Toast.LENGTH_LONG)
+                .show()
 
-                    }
+            startActivity(
+                Intent(this@LoginActivity, OutStagramPostListActivity::class.java)
+            )
 
-                    override fun onResponse(call: Call<User>, response: Response<User>) {
-                        if (response.isSuccessful) {
-                            val user = response.body()
-                            val token = user!!.token!!
-                            saveUserToken(token, this@LoginActivity)
-                            (application as MasterApplication).createRetrofit()
-
-                            Toast.makeText(this@LoginActivity, "로그인 하셨습니다.", Toast.LENGTH_LONG)
-                                .show()
-                        }
-                    }
-                })
+//            (application as MasterApplication).service.login(username, password)
+//                .enqueue(object : Callback<User> {
+//                    override fun onFailure(call: Call<User>, t: Throwable) {
+//                        Toast.makeText(this@LoginActivity, "어쩄든 로그인 하셨습니다.", Toast.LENGTH_LONG)
+//                            .show()
+//
+//                        startActivity(
+//                            Intent(this@LoginActivity, OutStagramPostListActivity::class.java)
+//                        )
+//                    }
+//
+//                    override fun onResponse(call: Call<User>, response: Response<User>) {
+//                        if (response.isSuccessful) {
+//                            val user = response.body()
+//                            val token = user!!.token!!
+//                            saveUserToken(token, this@LoginActivity)
+//                            (application as MasterApplication).createRetrofit()
+//
+//                            Toast.makeText(this@LoginActivity, "로그인 하셨습니다.", Toast.LENGTH_LONG)
+//                                .show()
+//
+//                            startActivity(
+//                                Intent(this@LoginActivity, OutStagramPostListActivity::class.java)
+//                            )
+//                        }
+//                    }
+//                })
         }
     }
 
