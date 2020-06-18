@@ -49,23 +49,23 @@ class EmailSignupActivity : AppCompatActivity() {
         (application as MasterApplication).service.register(
             username, password1, password2
         ).enqueue(object : Callback<User> {
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    Toast.makeText(activity, "가입에 실패하였습니다.", Toast.LENGTH_LONG).show()
-                }
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Toast.makeText(activity, "가입에 실패하였습니다.", Toast.LENGTH_LONG).show()
+            }
 
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    if (response.isSuccessful) {
-                        Toast.makeText(activity, "가입에 성공하였습니다.", Toast.LENGTH_LONG).show()
-                        val user = response.body()
-                        val token = user!!.token!!
-                        saveUserToken(token, activity)
-                        (application as MasterApplication).createRetrofit()
-                        activity.startActivity(
-                            Intent(activity, OutStagramPostListActivity::class.java)
-                        )
-                    }
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(activity, "가입에 성공하였습니다.", Toast.LENGTH_LONG).show()
+                    val user = response.body()
+                    val token = user!!.token!!
+                    saveUserToken(token, activity)
+                    (application as MasterApplication).createRetrofit()
+                    activity.startActivity(
+                        Intent(activity, OutStagramPostListActivity::class.java)
+                    )
                 }
-            })
+            }
+        })
     }
 
     fun saveUserToken(token: String?, activity: Activity) {
