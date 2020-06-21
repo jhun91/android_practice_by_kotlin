@@ -83,15 +83,15 @@ class EmailSignupActivity : AppCompatActivity() {
         loginBtn = activity.findViewById(R.id.login)
     }
 
-    fun getUserName(): String {
+    private fun getUserName(): String {
         return usernameView.text.toString()
     }
 
-    fun getUserPassword1(): String {
+    private fun getUserPassword1(): String {
         return userPassword1View.text.toString()
     }
 
-    fun getUserPassword2(): String {
+    private fun getUserPassword2(): String {
         return userPassword2View.text.toString()
     }
 
