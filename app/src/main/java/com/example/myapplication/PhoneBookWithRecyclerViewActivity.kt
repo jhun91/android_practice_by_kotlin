@@ -36,9 +36,7 @@ class PhoneBookWithRecyclerViewActivity : AppCompatActivity() {
         }
         return phoneBook
     }
-
 }
-
 
 class PhoneBookRecyclerAdapter(
     val phonebookList: PhoneBook,
